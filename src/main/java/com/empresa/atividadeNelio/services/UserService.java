@@ -41,9 +41,11 @@ public class UserService {
 		
 		entity = repository.save(entity);
 		return new UserDTO(entity);
+		
 	}
 	
 	public void delete(Long id) {
+		
 		try {
 			repository.deleteById(id);
 		}catch (EmptyResultDataAccessException e) {
@@ -52,6 +54,7 @@ public class UserService {
 		}catch (DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());		
 		}
+		
 	}
 	
 	

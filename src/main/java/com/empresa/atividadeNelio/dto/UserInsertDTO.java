@@ -66,10 +66,12 @@ public class UserInsertDTO implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+		
 	}
 
 	public String getPhone() {
 		return phone;
+		
 	}
 
 	public void setPhone(String phone) {
