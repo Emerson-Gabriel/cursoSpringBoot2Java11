@@ -1,15 +1,10 @@
 package com.empresa.atividadeNelio.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.empresa.atividadeNelio.entities.enums.Product;
 
 @Entity
 @Table(name = "tb_category")
@@ -20,8 +15,6 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
-	private Set<Product> products = new HashSet<>();
 	
 	public Category() {
 		
@@ -49,10 +42,6 @@ public class Category {
 		this.name = name;
 	}
 
-	public Set<Product> getProducts() {
-		return products;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,5 +66,7 @@ public class Category {
 			return false;
 		return true;
 	}
-
+	
+	
+	
 }
