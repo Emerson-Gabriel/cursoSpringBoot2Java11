@@ -70,9 +70,11 @@ public class UserService {
 	}
 	
 	public void updateData(User entity, UserDTO dto) {
+		
 		entity.setName(dto.getName());
 		entity.setEmail(dto.getEmail());
 		entity.setPhone(dto.getPhone());
+		
 		
 	}
 	
