@@ -1,4 +1,4 @@
-package com.educandoweb.course.services;
+package com.empresa.atividadeNelio.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.educandoweb.course.entities.Product;
-import com.educandoweb.course.repositories.ProductRepository;
+import com.empresa.atividadeNelio.entities.Product;
+import com.empresa.atividadeNelio.repositories.ProductRepository;
 
 @Service
 public class ProductService {

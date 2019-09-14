@@ -1,13 +1,10 @@
-package com.educandoweb.course.entities.pk;
+package com.empresa.atividadeNelio.entities;
 
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.educandoweb.course.entities.Order;
-import com.educandoweb.course.entities.Product;
 
 @Embeddable
 public class OrderItemPK implements Serializable {

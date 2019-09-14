@@ -1,4 +1,4 @@
-package com.educandoweb.course.entities;
+package com.empresa.atividadeNelio.entities;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.educandoweb.course.entities.pk.OrderItemPK;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

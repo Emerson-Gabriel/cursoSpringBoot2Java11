@@ -1,9 +1,9 @@
-package com.educandoweb.course.repositories;
+package com.empresa.atividadeNelio.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.educandoweb.course.entities.OrderItem;
-import com.educandoweb.course.entities.pk.OrderItemPK;
+import com.empresa.atividadeNelio.entities.OrderItem;
+import com.empresa.atividadeNelio.entities.OrderItemPK;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, OrderItemPK> {
 
