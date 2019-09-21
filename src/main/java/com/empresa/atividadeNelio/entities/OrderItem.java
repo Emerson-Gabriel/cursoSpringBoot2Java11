@@ -6,14 +6,14 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
+import com.empresa.atividadeNelio.entities.Product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_order_item")
 public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK();
 	
@@ -21,6 +21,7 @@ public class OrderItem implements Serializable {
 	private Double price;
 	
 	public OrderItem() {
+		
 	}
 
 	public OrderItem(Order order, Product product, Integer quantity, Double price) {
@@ -30,7 +31,7 @@ public class OrderItem implements Serializable {
 		this.quantity = quantity;
 		this.price = price;
 	}
-
+	
 	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
@@ -47,7 +48,7 @@ public class OrderItem implements Serializable {
 	public void setProduct(Product product) {
 		id.setProduct(product);
 	}
-	
+
 	public Integer getQuantity() {
 		return quantity;
 	}
@@ -91,5 +92,5 @@ public class OrderItem implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
+	}	
 }

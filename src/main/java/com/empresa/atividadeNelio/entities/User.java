@@ -15,11 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_user")
-public final class User implements Serializable {
-	
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id 
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
@@ -30,6 +29,7 @@ public final class User implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
+	
 	
 	public User() {
 		
@@ -87,7 +87,6 @@ public final class User implements Serializable {
 	public List<Order> getOrders() {
 		return orders;
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -113,7 +112,5 @@ public final class User implements Serializable {
 			return false;
 		return true;
 	}
-
-	
 	
 }
