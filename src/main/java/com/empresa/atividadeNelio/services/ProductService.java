@@ -8,6 +8,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.empresa.atividadeNelio.dto.CategoryDTO;
@@ -17,6 +19,7 @@ import com.empresa.atividadeNelio.entities.Category;
 import com.empresa.atividadeNelio.entities.Product;
 import com.empresa.atividadeNelio.repositories.CategoryRepository;
 import com.empresa.atividadeNelio.repositories.ProductRepository;
+import com.empresa.atividadeNelio.services.exceptions.DatabaseException;
 import com.empresa.atividadeNelio.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -82,6 +85,19 @@ public class ProductService {
 			//validacao para atualizae as cate someente quando mudar
 			setProductCategories(entity, dto.getCategories());
 		}
+	}
+	
+	public void delete(Long id) {
+		
+		try {
+			repository.deleteById(id);
+		}catch (EmptyResultDataAccessException e) {
+			// TODO: handle exception
+			throw new ResourceNotFoundException(id);			
+		}catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());		
+		}
+		
 	}
 	
 }
