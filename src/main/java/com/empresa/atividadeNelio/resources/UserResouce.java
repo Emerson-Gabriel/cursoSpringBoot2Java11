@@ -33,15 +33,14 @@ public class UserResouce {
 		
 		return ResponseEntity.ok().body(list);
 	}
-	
-	//unico
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
 		UserDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 	
-	//post
+
 	@PostMapping
 	public ResponseEntity<UserDTO> insert(@RequestBody UserInsertDTO dto){
 		

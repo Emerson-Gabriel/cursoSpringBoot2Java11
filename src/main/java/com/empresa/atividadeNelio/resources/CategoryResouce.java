@@ -17,7 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.empresa.atividadeNelio.dto.CategoryDTO;
 import com.empresa.atividadeNelio.dto.CategoryInsertDTO;
-import com.empresa.atividadeNelio.entities.Category;
 import com.empresa.atividadeNelio.services.CategoryService;
 
 @RestController
