@@ -2,6 +2,11 @@ package com.empresa.atividadeNelio.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.empresa.atividadeNelio.entities.User;
 
 public class UserInsertDTO implements Serializable{
@@ -10,8 +15,14 @@ public class UserInsertDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long id;
+	@NotEmpty(message = "can't be empty")  //essa mensagem é customizada para informar ao usuario
+	@Length(min = 5, max = 80, message = "tamanho precisa ser entre 5 e 80")
 	private String name;
+	@NotEmpty(message = "can't be empty")  //essa mensagem é customizada para informar ao usuario
+	@Email
 	private String email;
+	@NotEmpty(message = "can't be empty")  //essa mensagem é customizada para informar ao usuario
+	@Length(min = 8, max = 20, message = "tamanho precisa ser entre 8 e 20")
 	private String phone;
 	private String password;
 	
