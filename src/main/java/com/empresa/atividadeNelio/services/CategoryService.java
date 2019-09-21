@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.empresa.atividadeNelio.dto.CategoryDTO;
 import com.empresa.atividadeNelio.dto.CategoryInsertDTO;
-import com.empresa.atividadeNelio.dto.UserDTO;
 import com.empresa.atividadeNelio.entities.Category;
-import com.empresa.atividadeNelio.entities.User;
 import com.empresa.atividadeNelio.repositories.CategoryRepository;
 import com.empresa.atividadeNelio.services.exceptions.DatabaseException;
 import com.empresa.atividadeNelio.services.exceptions.ResourceNotFoundException;

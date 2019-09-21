@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.empresa.atividadeNelio.dto.OrderDTO;
-import com.empresa.atividadeNelio.dto.UserDTO;
 import com.empresa.atividadeNelio.entities.Order;
-import com.empresa.atividadeNelio.entities.User;
 import com.empresa.atividadeNelio.repositories.OrderRepository;
 import com.empresa.atividadeNelio.services.exceptions.ResourceNotFoundException;
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +56,32 @@ public class ProductService {
 			entity.getCategories().add(category);
 		}
 	}
+	
+	
+	@Transactional
+	public ProductDTO update(Long id, ProductCategoriesDTO dto) {
+		try {
+			
+			Product entity = repository.getOne(id);
+			updateData(entity, dto);
+			entity = repository.save(entity);
+			return new ProductDTO(entity);
+			
+		} catch (EntityNotFoundException e){
+			throw new ResourceNotFoundException(id);	
+		}
+	}
+	
+	public void updateData(Product entity, ProductCategoriesDTO dto) {
+		
+		entity.setName(dto.getName());
+		entity.setDescription(dto.getDescription());
+		entity.setPrice(dto.getPrice());
+		entity.setImgUrl(dto.getImgUrl());
+		if (dto.getCategories() != null && dto.getCategories().size() >0) {
+			//validacao para atualizae as cate someente quando mudar
+			setProductCategories(entity, dto.getCategories());
+		}
+	}
+	
 }
