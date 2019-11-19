@@ -1,37 +1,38 @@
-package com.educandoweb.course.entities.pk;
+package com.empresa.atividadeNelio.entities.pk;
 
 import java.io.Serializable;
-
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.educandoweb.course.entities.Order;
-import com.educandoweb.course.entities.Product;
+import com.empresa.atividadeNelio.entities.Order;
+import com.empresa.atividadeNelio.entities.Product;
 
 @Embeddable
 public class OrderItemPK implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
-	
-	@ManyToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name="product_id")
 	private Product product;
 	
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+	@ManyToOne
+	@JoinColumn(name="order_id")
+	private Order order;
+	
 	public Product getProduct() {
 		return product;
 	}
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 	@Override
 	public int hashCode() {
@@ -62,4 +63,7 @@ public class OrderItemPK implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+
 }

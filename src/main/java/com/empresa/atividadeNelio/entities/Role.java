@@ -1,67 +1,64 @@
 package com.empresa.atividadeNelio.entities;
 
-import java.io.Serializable;
-import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
 
 
 @Entity
-@Table(name="tb_payment")
-public class Payment implements Serializable{
+@Table(name="tb_role")
+public class Role implements GrantedAuthority {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	 @Id
-	 @GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
-	private Instant moment;
+	private String authority;
 	
-	
-	@OneToOne
-	@MapsId
-	private Order order;
-	public Payment() {
+	public Role() {
 		
 	}
-	public Payment(Long id, Instant moment, Order order) {
+
+	public Role(Long id, String authority) {
 		super();
 		this.id = id;
-		this.moment = moment;
-		this.order = order;
+		this.authority = authority;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Instant getMoment() {
-		return moment;
+
+	@Override
+	public String getAuthority() {
+		return authority;
 	}
-	public void setMoment(Instant moment) {
-		this.moment = moment;
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((authority == null) ? 0 : authority.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -70,7 +67,12 @@ public class Payment implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Payment other = (Payment) obj;
+		Role other = (Role) obj;
+		if (authority == null) {
+			if (other.authority != null)
+				return false;
+		} else if (!authority.equals(other.authority))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -78,6 +80,6 @@ public class Payment implements Serializable{
 			return false;
 		return true;
 	}
-    
+	
 	
 }

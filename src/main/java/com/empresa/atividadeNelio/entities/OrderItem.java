@@ -6,15 +6,16 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.empresa.atividadeNelio.entities.Product;
+import com.empresa.atividadeNelio.entities.pk.OrderItemPK;
 
 @Entity
-@Table(name = "tb_order_item")
-public class OrderItem implements Serializable {
+@Table(name="tb_order_item")
+public class OrderItem implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	private OrderItemPK id = new OrderItemPK();
+	private OrderItemPK id= new OrderItemPK();
 	
 	private Integer quantity;
 	private Double price;
@@ -31,19 +32,17 @@ public class OrderItem implements Serializable {
 		this.price = price;
 	}
 	
-
 	public Order getOrder() {
 		return id.getOrder();
 	}
-	
 	public void setOrder(Order order) {
 		id.setOrder(order);
 	}
 	
+	
 	public Product getProduct() {
 		return id.getProduct();
 	}
-	
 	public void setProduct(Product product) {
 		id.setProduct(product);
 	}
@@ -63,10 +62,9 @@ public class OrderItem implements Serializable {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-	public Double getSubTotal() {
-		return price * quantity;
-	}
+    public Double getSubTotal() {
+    	return price* quantity;
+    }
 	
 	@Override
 	public int hashCode() {
@@ -91,5 +89,6 @@ public class OrderItem implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
 }

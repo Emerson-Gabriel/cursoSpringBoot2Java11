@@ -2,21 +2,36 @@ package com.empresa.atividadeNelio.dto;
 
 import java.io.Serializable;
 
-import com.empresa.atividadeNelio.entities.User;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Length;
+
+import com.empresa.atividadeNelio.entities.User;
+import com.empresa.atividadeNelio.services.validation.UserUpdateValid;
+
+@UserUpdateValid
 public class UserDTO implements Serializable{
-	/**
+	  /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	private String name;
-	private String email;
-	private String phone;
-	
-	public UserDTO() {
-		
-	}
+	@NotEmpty(message=" can't be empty")
+	  @Length(min=5, max=80, message="length must be beteween 5 and 80")
+	  private String name;
+	  
+	  @NotEmpty(message=" can't be empty")
+	  @Email(message="invalid email")
+	  private String email;
+	  
+	  @NotEmpty(message=" can't be empty")
+	  @Length(min=8, max=20, message="length must be beteween 8 and 20")
+	  private String phone;
+	  
+	  public UserDTO() {
+		  
+	  }
 
 	public UserDTO(Long id, String name, String email, String phone) {
 		super();
@@ -25,12 +40,11 @@ public class UserDTO implements Serializable{
 		this.email = email;
 		this.phone = phone;
 	}
-	
 	public UserDTO(User entity) {
 		this.id = entity.getId();
-		this.name = entity.getName();
+		this.name = entity.getName() ;
 		this.email = entity.getEmail();
-		this.phone = entity.getPhone();
+		this.phone = entity.getPhone(); 
 	}
 
 	public Long getId() {
@@ -64,9 +78,8 @@ public class UserDTO implements Serializable{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
 	public User toEntity() {
-		return new User(id, name, email, phone, null);
+		return new User(id,name,email,phone,null);
 	}
-	
+	  
 }
