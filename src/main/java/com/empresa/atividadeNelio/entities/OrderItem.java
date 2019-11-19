@@ -14,6 +14,8 @@ public class OrderItem implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+        
+        
 	@EmbeddedId
 	private OrderItemPK id= new OrderItemPK();
 	
@@ -23,6 +25,7 @@ public class OrderItem implements Serializable{
 	public OrderItem() {
 		
 	}
+        
 
 	public OrderItem(Order order, Product product, Integer quantity, Double price) {
 		super();
@@ -39,6 +42,7 @@ public class OrderItem implements Serializable{
 		id.setOrder(order);
 	}
 	
+        
 	
 	public Product getProduct() {
 		return id.getProduct();

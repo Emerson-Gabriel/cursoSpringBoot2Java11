@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
@@ -19,9 +20,6 @@ import javax.persistence.Table;
 @Table(name="tb_category")
 public class Category implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -37,6 +35,7 @@ public class Category implements Serializable{
 	private Instant updatedAt;
 	
 	public Category() {
+            
 		
 	}
 	
@@ -92,6 +91,7 @@ public class Category implements Serializable{
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
+        
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
